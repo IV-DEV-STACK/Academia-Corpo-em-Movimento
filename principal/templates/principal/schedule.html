@@ -1,0 +1,41 @@
+{% extends "principal/base.html" %}
+
+{% block title %}Grade de turmas | Academia Corpo em Movimento{% endblock %}
+
+{% block intro %}
+    <p>Consulte os dias, horários, instrutores e vagas disponíveis nas turmas.</p>
+{% endblock %}
+
+{% block content %}
+    <section aria-labelledby="schedule-title">
+        <h2 id="schedule-title">Grade da semana</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Modalidade</th>
+                        <th scope="col">Dia da semana</th>
+                        <th scope="col">Horário</th>
+                        <th scope="col">Instrutor</th>
+                        <th scope="col">Vagas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for class_session in classes %}
+                        <tr>
+                            <td>{{ class_session.modality.name }}</td>
+                            <td>{{ class_session.get_weekday_display }}</td>
+                            <td>{{ class_session.time|time:"H:i" }}</td>
+                            <td>{{ class_session.instructor }}</td>
+                            <td>{{ class_session.seats }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">Ainda não há turmas cadastradas.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

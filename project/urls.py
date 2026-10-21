@@ -6,4 +6,5 @@ from principal import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
+    path("turmas/", views.schedule, name="schedule"),
 ]

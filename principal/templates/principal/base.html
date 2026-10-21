@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Academia Corpo em Movimento{% endblock %}</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Arial, sans-serif;
+            color: #17231e;
+            background: #f4f7f4;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; }
+        header { padding: 2rem max(1.25rem, calc((100% - 1100px) / 2)); background: #164e3c; color: white; }
+        header p { max-width: 650px; line-height: 1.6; }
+        header a { color: white; }
+        nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+        main { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        h1, h2, h3 { margin-top: 0; }
+        .modalities { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+        .card, .table-wrap { padding: 1.25rem; border: 1px solid #dce5df; border-radius: 12px; background: white; }
+        .card p { margin-bottom: 0; color: #506158; line-height: 1.5; }
+        .muted, .empty { color: #617168; }
+        .empty { padding: .75rem 0; }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: .8rem; border-bottom: 1px solid #e1e9e3; }
+        th { background: #164e3c; color: white; }
+        tbody tr:nth-child(even) { background: #f4f7f4; }
+        footer { padding: 1.5rem; color: #617168; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Academia Corpo em Movimento</h1>
+        <nav aria-label="Navegação principal">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'schedule' %}">Grade de turmas</a>
+        </nav>
+        {% if academy_address or academy_phone %}
+            <p>
+                {% if academy_address %}{{ academy_address }}{% endif %}
+                {% if academy_address and academy_phone %} · {% endif %}
+                {% if academy_phone %}{{ academy_phone }}{% endif %}
+            </p>
+        {% endif %}
+        {% block intro %}{% endblock %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>Academia Corpo em Movimento · Caruaru, PE</footer>
+</body>
+</html>

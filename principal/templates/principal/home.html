@@ -1,0 +1,25 @@
+{% extends "principal/base.html" %}
+
+{% block title %}Início | Academia Corpo em Movimento{% endblock %}
+
+{% block intro %}
+    <p>Conheça as modalidades da academia em Caruaru e encontre a atividade ideal para você.</p>
+{% endblock %}
+
+{% block content %}
+    <section aria-labelledby="modalities-title">
+        <h2 id="modalities-title">Nossas modalidades</h2>
+        <div class="modalities">
+            {% for modality in modalities %}
+                <article class="card">
+                    <h3>{{ modality.name }}</h3>
+                    {% if modality.description %}
+                        <p>{{ modality.description|linebreaksbr }}</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <p class="empty">As modalidades serão divulgadas em breve.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
