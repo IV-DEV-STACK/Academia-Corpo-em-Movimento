@@ -14,6 +14,7 @@ class ModalityAdmin(admin.ModelAdmin):
 @admin.register(ClassSession)
 class ClassSessionAdmin(admin.ModelAdmin):
     list_display = ("modality", "weekday", "time", "instructor", "seats")
+    fields = ("modality", "weekday", "time", "instructor", "seats")
     list_filter = ("modality", "weekday")
     search_fields = ("instructor", "modality__name")
     ordering = ("weekday", "time")

@@ -1,4 +1,5 @@
 from django.contrib.admin.sites import AdminSite
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db.models.deletion import ProtectedError
 from django.test import RequestFactory, TestCase
@@ -86,6 +87,7 @@ class AcademyAdminTests(TestCase):
 
     def test_class_admin_filters_modality_and_weekday_and_searches_instructor(self):
         request = self.factory.get("/")
+        request.user = User(is_superuser=True, is_staff=True, is_active=True)
 
         self.assertEqual(
             self.class_admin.get_list_filter(request),
@@ -96,6 +98,13 @@ class AcademyAdminTests(TestCase):
             self.class_admin.get_list_display(request),
             ("modality", "weekday", "time", "instructor", "seats"),
         )
+        self.assertEqual(
+            self.class_admin.get_fields(request),
+            ("modality", "weekday", "time", "instructor", "seats"),
+        )
+        self.assertTrue(self.class_admin.has_add_permission(request))
+        self.assertTrue(self.class_admin.has_delete_permission(request))
+        self.assertIn("delete_selected", self.class_admin.get_actions(request))
 
 
 class ModelRulesTests(TestCase):
