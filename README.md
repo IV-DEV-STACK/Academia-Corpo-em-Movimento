@@ -3,6 +3,19 @@
 Sistema web em Django para a proprietária manter modalidades e turmas e publicar
 essas informações diretamente do banco de dados para os alunos.
 
+## Equipe
+
+- Equipe de desenvolvimento: Corpo em Movimento (nome provisório; confirmar com a turma).
+
+## Diário de IA — 21/10/2026
+
+- Converti os requisitos em modelos para modalidades e turmas, incluindo regras de
+  exclusão, unicidade do nome, dias da semana e quantidade de vagas.
+- Configurei o painel administrativo com filtros e busca para os cadastros.
+- Criei as páginas públicas de modalidades e grade, além dos dados iniciais.
+- Validei o projeto com 10 testes automatizados, verificações do Django e
+  conferência das migrações.
+
 ## O que o sistema faz
 
 - Painel administrativo protegido pelo Django em `/admin/`.
