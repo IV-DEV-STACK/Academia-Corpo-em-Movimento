@@ -31,16 +31,23 @@ class PublicPagesTests(TestCase):
             seats=15,
         )
 
-    def test_homepage_shows_modalities_with_their_status_and_descriptions(self):
+    def test_homepage_shows_only_active_modalities(self):
         response = self.client.get("/")
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Pilates Teste")
         self.assertContains(response, "Aulas de solo")
-        self.assertContains(response, "Natação Teste")
         self.assertContains(response, "Ativa")
-        self.assertContains(response, "Inativa")
-        self.assertContains(response, "Piscina em reforma")
+        self.assertNotContains(response, "Natação Teste")
+        self.assertNotContains(response, "Inativa")
+        self.assertNotContains(response, "Piscina em reforma")
+        self.assertTrue(
+            all(modality.is_active for modality in response.context["modalities"])
+        )
+        self.assertNotIn(
+            self.inactive_modality,
+            response.context["modalities"],
+        )
         self.assertContains(response, "Rua Exemplo, 100 - Centro, Caruaru - PE")
         self.assertContains(response, "(81) 90000-0000")
         self.assertContains(response, 'href="/turmas/"')

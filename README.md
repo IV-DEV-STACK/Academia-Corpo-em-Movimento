@@ -28,8 +28,7 @@ essas informações diretamente do banco de dados para os alunos.
   no painel.
 - Filtros públicos na grade por modalidade e dia da semana e busca parcial pelo
   nome do instrutor.
-- Página inicial (`/`) com modalidades ativas e inativas, descrições e status
-  visível.
+- Página inicial (`/`) com modalidades ativas e suas descrições.
 - Grade pública (`/turmas/`) em tabela, ordenada por dia da semana e horário,
   com modalidade, dia, horário, instrutor e vagas.
 - Menu para navegar entre as duas páginas públicas.
@@ -42,9 +41,8 @@ essas informações diretamente do banco de dados para os alunos.
 - O painel oferece dias fixos de segunda-feira a sábado.
 - Horários usam o formato de hora `HH:MM`.
 - Vagas são inteiras não negativas, com padrão de 10.
-- Modalidades inativas continuam no painel e aparecem na página inicial com
-  status explícito "Inativa", conforme a solicitação mais recente; os alunos
-  podem ver que a modalidade não está disponível.
+- Modalidades inativas continuam no painel, mas não aparecem na página inicial
+  pública.
 - Modalidades com turmas associadas não podem ser excluídas.
 
 ## Tecnologias
@@ -92,8 +90,8 @@ Matrícula de alunos, pagamentos, login de aluno, aplicativo para celular e foto
 - Os filtros públicos são independentes e combináveis: modalidade, dia da
   semana e trecho do nome do instrutor; sem correspondências, a grade informa
   que nenhuma turma foi encontrada.
-- A exibição pública de modalidades inativas com o status "Inativa" substitui a
-  regra anterior RF/RN que determinava ocultá-las na página inicial.
+- Modalidades inativas são mantidas no painel administrativo e ocultadas da
+  página inicial pública.
 - Para preservar a regra de não excluir modalidades usadas por turmas, o
   relacionamento usa proteção contra exclusão em vez de apagar turmas em cascata.
 - A grade pública lista as turmas cadastradas, inclusive as de modalidades

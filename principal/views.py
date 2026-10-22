@@ -10,7 +10,7 @@ def home(request):
         request,
         "principal/home.html",
         {
-            "modalities": Modality.objects.all(),
+            "modalities": Modality.objects.filter(is_active=True),
             "academy_address": settings.ACADEMY_ADDRESS,
             "academy_phone": settings.ACADEMY_PHONE,
         },
