@@ -48,8 +48,11 @@ class PublicPagesTests(TestCase):
             self.inactive_modality,
             response.context["modalities"],
         )
-        self.assertContains(response, "Rua Exemplo, 100 - Centro, Caruaru - PE")
-        self.assertContains(response, "(81) 90000-0000")
+        footer = response.content.decode().split("<footer>", 1)[1].split("</footer>", 1)[0]
+        self.assertIn(
+            "Rua Exemplo, 100 - Centro, Caruaru - PE · (81) 90000-0000",
+            " ".join(footer.split()),
+        )
         self.assertContains(response, 'href="/turmas/"')
 
     def test_schedule_shows_all_classes_ordered_by_weekday_and_time(self):

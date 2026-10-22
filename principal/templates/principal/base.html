@@ -49,6 +49,13 @@
             <a href="{% url 'home' %}">Início</a>
             <a href="{% url 'schedule' %}">Grade de turmas</a>
         </nav>
+        {% block intro %}{% endblock %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        Academia Corpo em Movimento
         {% if academy_address or academy_phone %}
             <p>
                 {% if academy_address %}{{ academy_address }}{% endif %}
@@ -56,11 +63,6 @@
                 {% if academy_phone %}{{ academy_phone }}{% endif %}
             </p>
         {% endif %}
-        {% block intro %}{% endblock %}
-    </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    <footer>Academia Corpo em Movimento · Caruaru, PE</footer>
+    </footer>
 </body>
 </html>
