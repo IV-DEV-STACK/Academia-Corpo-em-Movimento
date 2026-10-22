@@ -22,8 +22,18 @@
         .modalities { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
         .card, .table-wrap { padding: 1.25rem; border: 1px solid #dce5df; border-radius: 12px; background: white; }
         .card p { margin-bottom: 0; color: #506158; line-height: 1.5; }
+        .status { display: inline-block; margin: 0 0 .75rem; padding: .3rem .6rem; border-radius: 999px; font-size: .875rem; font-weight: 700; }
+        .status-active { background: #e1f3e7; color: #165b31; }
+        .status-inactive { background: #fbe7e7; color: #8a2424; }
         .muted, .empty { color: #617168; }
         .empty { padding: .75rem 0; }
+        .filter-panel { margin-bottom: 1.25rem; padding: 1.25rem; border: 1px solid #dce5df; border-radius: 12px; background: white; }
+        .filter-form { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; }
+        .filter-form label { display: grid; gap: .4rem; font-weight: 600; }
+        .filter-form input, .filter-form select, .filter-form button { min-height: 42px; padding: .55rem .75rem; border: 1px solid #b8c9bf; border-radius: 7px; font: inherit; }
+        .filter-form button { border: 0; background: #164e3c; color: white; cursor: pointer; font-weight: 700; }
+        .filter-form a { color: #164e3c; }
+        .errors { color: #a32121; }
         .table-wrap { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; text-align: left; }
         th, td { padding: .8rem; border-bottom: 1px solid #e1e9e3; }

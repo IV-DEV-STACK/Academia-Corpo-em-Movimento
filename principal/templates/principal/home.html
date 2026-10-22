@@ -13,6 +13,11 @@
             {% for modality in modalities %}
                 <article class="card">
                     <h3>{{ modality.name }}</h3>
+                    {% if modality.is_active %}
+                        <span class="status status-active">Ativa</span>
+                    {% else %}
+                        <span class="status status-inactive">Inativa</span>
+                    {% endif %}
                     {% if modality.description %}
                         <p>{{ modality.description|linebreaksbr }}</p>
                     {% endif %}
